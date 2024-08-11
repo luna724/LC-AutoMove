@@ -9,7 +9,7 @@
 3. ヘルプを読んで使う / that helps all, good luck!
 
 ## 機能説明 / command information
-- `/automove toggle`
+- `/automove toggle` <br>
 AutoMoveを有効化する <br/>
 そんだけ
 
@@ -17,14 +17,14 @@ AutoMoveを有効化する <br/>
 
 Activate AutoMove
 
-- `/automove hoverclick`
+- `/automove hoverclick` <br>
 左クリックの有無を設定する
 
 /
 
 configurate left-click
 
-- `/automove setdirection <L/R/F>`
+- `/automove setdirection <L/R/F>` <br>
 歩く向きを設定する <br/>
 Lは左、Rは右、Fは前
 後ろなんて向かずに生きていけ？
