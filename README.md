@@ -1,16 +1,17 @@
 # LC-AutoMove
  Minecraft 1.8.9 で特定方向に歩きながらクリックするだけのMOD <br>
- `Hypixel Skyblock` の Garden での使用を想定しているが、普通に押すのと何かが違うわけではない
+ `Hypixel Skyblock` の Garden での使用を想定しているが、普通に押すのと何かが違うわけではない <br>
+また、[`LunaClient`](https://github.com/luna724/LunaClient) にて、複雑な動作を含む自動化機能を提供している
 
 
 ## 使い方 / installation
 1. 普通に Forge MOD として導入する / Install the mod
 2. ゲーム内で `/automove` と打ってヘルプを表示する / type `/automove` for in-game help
-3. ヘルプを読んで使う / that helps all, good luck!
+3. ヘルプを読んで使う / that helps all, good luck! but,.. it's japanese
 
 ## 機能説明 / command information
 - `/automove toggle` <br>
-AutoMoveを有効化する <br/>
+AutoMoveを有効化/無効化する <br/>
 そんだけ
 
 /
@@ -24,26 +25,27 @@ Activate AutoMove
 
 configurate left-click
 
-- `/automove setdirection <L/R/F>` <br>
+- `/automove setdirection <L/R/F/B/L?R?F?B?/reset>` <br>
 歩く向きを設定する <br/>
-Lは左、Rは右、Fは前
-後ろなんて向かずに生きていけ？
+Lは左、Rは右、Fは前、Bは後ろ <br>
+`/automove setdirection` のみで移動なし <br>
+`/automove setdirection reset` でリセット <br>
+`/automove setdirection RF` などで 右+前 などを実装できる 
 
 /
 
 configure direction to walking
-L = Left, R = Right, F = Forward
-Backward isN't supported.
-
+L = Left, R = Right, F = Forward, B = Backward
+reset or not specify = won't moving
+Pro Tip: rf = Right + Forward
 
 ### セーフ機能 / is it Safe???
-Java の Robot を使用したエミュレーションを行っているだけだから <br />
-何かが押されただけで止まったりして非常に安全 <br />
-ただ `Hypixel` とかで使うなら [LunaClient](https://github.com/luna724/LunaClient) の `AntiServerMoving` を入れないとバレるかもね <br>
+クライアントのキー情報をいじるだけなので安全性は高い <br />
+だが、Macro という部類で禁止行為であることは確かなので、自己責任 <br />
 
 /
 
-you think.. it's suspicious? <br>
+you think.. it's suspicious/bannable? <br>
 DON'T USE IT!
 
 
