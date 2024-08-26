@@ -34,9 +34,9 @@ Lは左、Rは右、Fは前、Bは後ろ <br>
 
 /
 
-configure direction to walking
-L = Left, R = Right, F = Forward, B = Backward
-reset or not specify = won't moving
+configure direction to walking <br>
+L = Left, R = Right, F = Forward, B = Backward <br>
+reset or not specify = won't moving <br>
 Pro Tip: rf = Right + Forward
 
 ### セーフ機能 / is it Safe???
