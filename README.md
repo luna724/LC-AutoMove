@@ -6,7 +6,7 @@
 ## 使い方 / installation
 1. 普通に Forge MOD として導入する / Install the mod
 2. ゲーム内で `/automove` と打ってヘルプを表示する / type `/automove` for in-game help
-3. ヘルプを読んで使う / that helps all, good luck! but,.. it's japanese
+3. ヘルプを読んで使う / that helps all. but,.. it's japanese    [good luck!](https://www.deepl.com/ja/translator#en/ja/)
 
 ## 非フォーカス時に使う方法
 `F3` + `P` を押すと、非フォーカス時にゲームメニューが勝手に開かなくなるんだぞ！
@@ -18,7 +18,7 @@ AutoMoveを有効化/無効化する <br/>
 
 /
 
-Activate AutoMove
+Activate/Deactivate AutoMove
 
 - `/automove hoverclick` <br>
 左クリックの有無を設定する
@@ -40,6 +40,16 @@ configure direction to walking <br>
 L = Left, R = Right, F = Forward, B = Backward <br>
 reset or not specify = won't moving <br>
 Pro Tip: rf = Right + Forward
+
+- `/automove <start/stop>` <br>
+スタートとストップを指定した版の `/automove toggle`
+
+- `/automove safemode` <br>
+ワールド移動時に自動的に無効化する機能のオンオフ
+
+- `/automove <REQUEST> senddatatolunaclient` <br>
+`LunaClient`用に作られた、`LC-AutoMove`と対話するためのコマンド <br>
+リクエスト表は `LunaClient`側に記載
 
 ### セーフ機能 / is it Safe???
 クライアントのキー情報をいじるだけなので安全性は高い <br />
