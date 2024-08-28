@@ -3,11 +3,13 @@
  `Hypixel Skyblock` の Garden での使用を想定しているが、普通に押すのと何かが違うわけではない <br>
 また、[`LunaClient`](https://github.com/luna724/LunaClient) にて、複雑な動作を含む自動化機能を提供している
 
-
 ## 使い方 / installation
 1. 普通に Forge MOD として導入する / Install the mod
 2. ゲーム内で `/automove` と打ってヘルプを表示する / type `/automove` for in-game help
 3. ヘルプを読んで使う / that helps all, good luck! but,.. it's japanese
+
+## 非フォーカス時に使う方法
+`F3` + `P` を押すと、非フォーカス時にゲームメニューが勝手に開かなくなるんだぞ！
 
 ## 機能説明 / command information
 - `/automove toggle` <br>
