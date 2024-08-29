@@ -14,18 +14,9 @@
 ## 機能説明 / command information
 - `/automove toggle` <br>
 AutoMoveを有効化/無効化する <br/>
-そんだけ
-
-/
-
-Activate/Deactivate AutoMove
 
 - `/automove hoverclick` <br>
 左クリックの有無を設定する
-
-/
-
-configurate left-click
 
 - `/automove setdirection <L/R/F/B/L?R?F?B?/reset>` <br>
 歩く向きを設定する <br/>
@@ -33,13 +24,6 @@ Lは左、Rは右、Fは前、Bは後ろ <br>
 `/automove setdirection` のみで移動なし <br>
 `/automove setdirection reset` でリセット <br>
 `/automove setdirection RF` などで 右+前 などを実装できる 
-
-/
-
-configure direction to walking <br>
-L = Left, R = Right, F = Forward, B = Backward <br>
-reset or not specify = won't moving <br>
-Pro Tip: rf = Right + Forward
 
 - `/automove <start/stop>` <br>
 スタートとストップを指定した版の `/automove toggle`
@@ -51,15 +35,16 @@ Pro Tip: rf = Right + Forward
 `LunaClient`用に作られた、`LC-AutoMove`と対話するためのコマンド <br>
 リクエスト表は `LunaClient`側に記載
 
+- `/automove toggleinfo` <br>
+動作時の内部的挙動をチャットに表示するかどうか
+
+- `/automove setyaw <Yaw>` <br>
+Yawを指定方向へ動かす
+それだけの機能
+ 
 ### セーフ機能 / is it Safe???
 クライアントのキー情報をいじるだけなので安全性は高い <br />
 だが、Macro という部類で禁止行為であることは確かなので、自己責任 <br />
-
-/
-
-you think.. it's suspicious/bannable? <br>
-DON'T USE IT!
-
 
 ### 感謝 / Credits
 - [dxxxxy/1.8.9ForgeTemplate](https://github.com/dxxxxy/1.8.9ForgeTemplate)
