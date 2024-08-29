@@ -8,6 +8,8 @@ import net.minecraft.util.ChatComponentText;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.Float.parseFloat;
+
 public class CommandAutoMove extends CommandBase {
     private static boolean containsOnlyAvailableChars(String input, List<String> availableChar) {
         for (char c : input.toLowerCase().toCharArray()) {
@@ -142,6 +144,28 @@ public class CommandAutoMove extends CommandBase {
             String msg = "[§dLC-AutoMove§f]: §6Safemode: " + autoMove.settings.autoMoveStopWhenServerSwap;
             sender.addChatMessage(new ChatComponentText(msg));
         }
+        else if ("toggleinfo".equalsIgnoreCase(args[0])) {
+            autoMove.settings.autoMoveInfo = !autoMove.settings.autoMoveInfo;
+            String msg = "[§dLC-AutoMove§f]: §6Internal Info: ";
+
+            if (autoMove.settings.autoMoveInfo) {
+                msg += "§lActive";
+            }
+            else {
+                msg += "§lDisable";
+            }
+            sender.addChatMessage(new ChatComponentText(msg));
+        }
+        else if ("setyaw".equalsIgnoreCase(args[0])) {
+            if (args.length < 2) {
+                String msg = "[§dLC-AutoMove§f]: §cmissing 1 Required arguments. §f: `/automove setyaw <Yaw>`";
+                sender.addChatMessage(new ChatComponentText(msg));
+                return;
+            }
+            String stringYaw = args[1];
+            float yaw = parseFloat(stringYaw);
+            autoMove.rotationManager.startYawChanger(yaw, 25);
+        }
 
         else if (!(args.length < 2)) {
             if ("senddatatolunaclient".equalsIgnoreCase(args[1])) {
@@ -157,7 +181,7 @@ public class CommandAutoMove extends CommandBase {
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         if (args.length == 1) {
             // 第一引数の補完を提供
-            return getListOfStringsMatchingLastWord(args, "help", "start", "stop", "toggle", "setdirection", "hoverclick", "safemode");
+            return getListOfStringsMatchingLastWord(args, "help", "start", "stop", "toggle", "setyaw", "setdirection", "hoverclick", "safemode", "toggleinfo");
         }
         else if (args.length == 2) {
             // setdirection時に 第二引数の補完を提供

@@ -13,16 +13,24 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
 
 @SideOnly(Side.CLIENT)
 public class AutoMove {
     public final Settings settings;
     private final LunaAPI lunaAPI;
+    public final RotationManager rotationManager;
+    public final ChatLib chatLib;
 
-    public AutoMove(Settings settings, LunaAPI lunaAPI) {
+    public AutoMove(Settings settings, LunaAPI lunaAPI, RotationManager rotationManager, ChatLib chatLib) {
         this.settings = settings;
         this.lunaAPI = lunaAPI;
+        this.rotationManager = rotationManager;
+        this.chatLib = chatLib;
     }
 
     private int[] getKeyBinds() {
@@ -74,6 +82,7 @@ public class AutoMove {
         KeyBinding.setKeyBindState(keyCodes[2], false);
         KeyBinding.setKeyBindState(keyCodes[3], false);
         KeyBinding.setKeyBindState(keyCodes[4], false);
+        chatLib.sendStatusInfo("[Main]: Stopped AutoMove");
     }
 
     @SubscribeEvent
@@ -84,7 +93,7 @@ public class AutoMove {
         Minecraft mc = Minecraft.getMinecraft();
         // GUIが開いている場合は動作を行わない
         if (mc.currentScreen != null) {
-            System.out.println("Current screen != null!. Current screen: " + mc.currentScreen.toString());
+            //System.out.println("Current screen != null!. Current screen: " + mc.currentScreen.toString());
             return;
         }
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
@@ -139,22 +148,46 @@ public class AutoMove {
         **LC-Identifier
          */
         // デフォ
-        message = lunaAPI.Identifier + "AutoMove Options: $" + isEnabled + "&$" + hasClick + "&$" + movingKey.toString() + endsIdentifier;
+        message = LunaAPI.Identifier + "AutoMove Options: $" + isEnabled + "&$" + hasClick + "&$" + movingKey.toString() + endsIdentifier;
         if (request.equalsIgnoreCase("isEnabled?")) {
-            message = lunaAPI.Identifier + "isEnabled? @" + isEnabled + endsIdentifier;
+            message = LunaAPI.Identifier + "isEnabled? @" + isEnabled + endsIdentifier;
         }
         if (request.equalsIgnoreCase("hasClick?")) {
-            message = lunaAPI.Identifier + "hasClick? @" + hasClick + endsIdentifier;
+            message = LunaAPI.Identifier + "hasClick? @" + hasClick + endsIdentifier;
         }
         if (request.equalsIgnoreCase("movingKey?")) {
-            message = lunaAPI.Identifier + "movingKey? @" + movingKey + endsIdentifier;
+            message = LunaAPI.Identifier + "movingKey? @" + movingKey + endsIdentifier;
         }
         if (request.equalsIgnoreCase("VERSION?")) {
-            message = lunaAPI.Identifier + "VERSION? @" + MainMod.VERSION + endsIdentifier;
+            message = LunaAPI.Identifier + "VERSION? @" + MainMod.VERSION + endsIdentifier;
         }
-        if (request.equalsIgnoreCase("POST") || args.length > 2) {
+        if (request.equalsIgnoreCase("POST") && args.length > 2) {
             String received = args[2];
-            message = lunaAPI.Identifier + "STATUS? @200" + endsIdentifier;
+            message = LunaAPI.Identifier + "STATUS? @200" + endsIdentifier;
+        }
+        if (request.equalsIgnoreCase("rotateYaw") && args.length > 3) {
+            String stringYaw = args[2];
+            String stringTaken = args[3];
+            float yaw = parseFloat(stringYaw);
+            int taken = parseInt(stringTaken);
+            rotationManager.startYawChanger(yaw, taken);
+            message = LunaAPI.Identifier + "Changing Yaw to " + yaw + ". Taking " + taken + "ticks" + endsIdentifier;
+        }
+        if (request.equalsIgnoreCase("sendStatus") && args.length > 3) {
+            String status = args[2];
+            String[] statusStringArray = Arrays.copyOfRange(args, 3, args.length);
+            String statusString = String.join(" ", statusStringArray);
+
+            if (status.equalsIgnoreCase("info")) {
+                chatLib.sendStatusInfo(statusString);
+            }
+            else if (status.equalsIgnoreCase("warn")) {
+                chatLib.sendStatusWarn(statusString);
+            }
+            else if (status.equalsIgnoreCase("critical")) {
+                chatLib.sendStatusCritical(statusString);
+            }
+            message = LunaAPI.Identifier + "sent by. LunaClient - " + status.toUpperCase() + endsIdentifier;
         }
 
         return message;

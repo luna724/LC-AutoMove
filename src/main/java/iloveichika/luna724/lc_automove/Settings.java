@@ -12,6 +12,7 @@ public class Settings {
     public boolean autoMoveClickEnable;
     public boolean autoMoveEnabled;
     public boolean autoMoveStopWhenServerSwap;
+    public boolean autoMoveInfo;
 
     // Configurationオブジェクト
     private Configuration config;
@@ -32,6 +33,7 @@ public class Settings {
         autoMoveClickEnable = config.getBoolean("AutoMoveClickEnable", CATEGORY_GENERAL, true, "自動移動時にクリックをするかどうか");
         autoMoveEnabled = config.getBoolean("AutoMoveEnabled", CATEGORY_GENERAL, false, "自動移動のすてーたす ");
         autoMoveStopWhenServerSwap = config.getBoolean("AutoMoveStopWhenServerSwap", CATEGORY_GENERAL, true, "");
+        autoMoveInfo = config.getBoolean("AutoMoveInfo", CATEGORY_GENERAL, true, "");
     }
 
     // 設定を保存する
@@ -40,6 +42,7 @@ public class Settings {
         config.get(CATEGORY_GENERAL, "AutoMoveClickEnable", autoMoveClickEnable).set(autoMoveClickEnable);
         config.get(CATEGORY_GENERAL, "AutoMoveEnabled", autoMoveEnabled).set(autoMoveEnabled);
         config.get(CATEGORY_GENERAL, "AutoMoveStopWhenServerSwap", autoMoveStopWhenServerSwap).set(autoMoveStopWhenServerSwap);
+        config.get(CATEGORY_GENERAL, "AutoMoveInfo", autoMoveInfo).set(autoMoveInfo);
 
         System.out.println("[LC-AutoMove]: Saving config..");
         config.save();
