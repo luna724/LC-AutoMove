@@ -1,7 +1,7 @@
 package iloveichika.luna724.lc_automove;
 
-import iloveichika.luna724.lc_automove.Settings;
-import iloveichika.luna724.lc_automove.AutoMove;
+import iloveichika.luna724.lunaapi.LunaAPI;
+import iloveichika.luna724.lunaapi.Main;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -14,10 +14,11 @@ import java.io.File;
 public class MainMod {
     public static final String MODID = "lc_automove";
     public static final String NAME = "LC-AutoMove";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "2.0";
 
     private Settings settings;
     private AutoMove autoMove; // autoMove の定義を修正
+    private LunaAPI lunaApi;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -26,7 +27,8 @@ public class MainMod {
         settings = new Settings(configFile);
 
         // AutoMoveを初期化
-        autoMove = new AutoMove(settings); // autoMove の初期化
+        lunaApi = Main.getInstance();
+        autoMove = new AutoMove(settings, lunaApi); // autoMove の初期化
 
         // イベントバスに登録してTickイベントを監視
         MinecraftForge.EVENT_BUS.register(autoMove);
