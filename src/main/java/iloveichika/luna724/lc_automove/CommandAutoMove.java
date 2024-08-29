@@ -18,6 +18,16 @@ public class CommandAutoMove extends CommandBase {
         return true;
     }
 
+    private String getHelpMessage() {
+        return "§f[§dLC-AutoMove§f] Help\n" +
+                "§6 - §f/automove toggle\n" +
+                "§e AutoMove の切り替え\n" +
+                "§6 - §f/automove setdirection <L/R/F/B>\n" +
+                "§e 歩く向きの設定 L = 左, R = 右, F = 前, B = 後\n" +
+                "§6 - §f/automove hoverclick\n" +
+                "§e 左クリックするかどうか";
+    }
+
     private final AutoMove autoMove;
 
     public CommandAutoMove(AutoMove autoMove) {
@@ -37,18 +47,16 @@ public class CommandAutoMove extends CommandBase {
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
         if (args.length < 1) {
-            String helpMessage = "§f[§dLC-AutoMove§f] Help\n" +
-                    "§6 - §f/automove toggle\n" +
-                    "§e AutoMove の切り替え\n" +
-                    "§6 - §f/automove setdirection <L/R/F/B>\n" +
-                    "§e 歩く向きの設定 L = 左, R = 右, F = 前, B = 後\n" +
-                    "§6 - §f/automove hoverclick\n" +
-                    "§e 左クリックするかどうか";
+            String helpMessage = getHelpMessage();
             sender.addChatMessage(new ChatComponentText(helpMessage));
             return;
         }
+        if ("help".equalsIgnoreCase(args[0])) {
+            String helpMessage = getHelpMessage();
+            sender.addChatMessage(new ChatComponentText(helpMessage));
+            return;
 
-        if ("start".equalsIgnoreCase(args[0])) {
+        } else if ("start".equalsIgnoreCase(args[0])) {
             autoMove.settings.autoMoveEnabled = true;
 
             String msg = "[§dLC-AutoMove§f]: §6AutoMove Started.";
@@ -149,7 +157,7 @@ public class CommandAutoMove extends CommandBase {
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         if (args.length == 1) {
             // 第一引数の補完を提供
-            return getListOfStringsMatchingLastWord(args, "start", "stop", "toggle", "setdirection", "hoverclick", "safemode");
+            return getListOfStringsMatchingLastWord(args, "help", "start", "stop", "toggle", "setdirection", "hoverclick", "safemode");
         }
         else if (args.length == 2) {
             // setdirection時に 第二引数の補完を提供

@@ -78,12 +78,6 @@ public class AutoMove {
 
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        boolean isWorldLoaded = lunaAPI.getIsWorldLoad();
-        if (!isWorldLoaded) {
-            System.out.println("World NOT Loaded!");
-            return;
-        }
-
         // 設定が無効なら
         if (!settings.autoMoveEnabled) { return; }
 

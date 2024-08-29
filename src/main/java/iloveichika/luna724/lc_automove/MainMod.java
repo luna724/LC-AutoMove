@@ -14,7 +14,7 @@ import java.io.File;
 public class MainMod {
     public static final String MODID = "lc_automove";
     public static final String NAME = "LC-AutoMove";
-    public static final String VERSION = "2.0";
+    public static final String VERSION = "2.1";
 
     private Settings settings;
     private AutoMove autoMove; // autoMove の定義を修正
