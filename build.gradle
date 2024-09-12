@@ -15,7 +15,7 @@ plugins {
 
 apply plugin: "net.minecraftforge.gradle.forge"
 
-version = "2.2"
+version = "2.3"
 group = "iloveichika.luna724" //http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "LC-AutoMove" //name of the output jar
 
