@@ -18,7 +18,7 @@ AutoMoveを有効化/無効化する <br/>
 - `/automove hoverclick` <br>
 左クリックの有無を設定する
 
-- `/automove setdirection <L/R/F/B/L?R?F?B?/reset>` <br>
+- `/automove setdirection <L?R?F?B?/reset>` <br>
 歩く向きを設定する <br/>
 Lは左、Rは右、Fは前、Bは後ろ <br>
 `/automove setdirection` のみで移動なし <br>
