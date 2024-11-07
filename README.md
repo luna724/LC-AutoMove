@@ -1,3 +1,6 @@
+# LC-AutoMoveはLunaClient v2 に統合され更新が終了しました
+- https://github.com/luna724/LunaClient/tree/v2.0
+
 # LC-AutoMove
  Minecraft 1.8.9 で特定方向に歩きながらクリックするだけのMOD <br>
  `Hypixel Skyblock` の Garden での使用を想定しているが、普通に押すのと何かが違うわけではない <br>
