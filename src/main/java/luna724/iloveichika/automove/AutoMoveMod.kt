@@ -4,10 +4,14 @@ import luna724.iloveichika.lcg.util._ChatLib
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
+import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import java.io.File
 
+@Mod(modid = "lc_automove", name = "LC-AutoMove", version = "2.4")
 class AutoMoveMod {
+    @Mod.EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
         // 設定ファイルの場所を指定してSettingsを初期化
         val configFile = File(event.modConfigurationDirectory, "luna724_automove.cfg")
@@ -23,7 +27,8 @@ class AutoMoveMod {
         MinecraftForge.EVENT_BUS.register(rotationManager)
     }
 
-    fun onInit() {
+    @Mod.EventHandler
+    fun onInit(event: FMLInitializationEvent) {
         ClientCommandHandler.instance.registerCommand(CommandAutoMove(autoMoveInstance))
     }
 
