@@ -1,4 +1,9 @@
 # Changelogs
+## v2.4
+- `LunaClient v2`から分離
+- AutoMove.kt にて API呼び出しのような機能を追加4
+- コードのkotlin化
+
 ## v2.0
 - `/automove` のみが呼び出された際に発生する `An Unknown Error occurred while attempting to perform this command.` の問題を修正
 - `/automove setdirection` が複数の移動方向を指定できるように

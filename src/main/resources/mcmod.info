@@ -1,0 +1,17 @@
+[
+{
+  "modid": "lc_automove",
+  "name": "LC-AutoMove",
+  "description": "low-level player movement control in commands for Minecraft 1.8.9",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/luna724/LC-AutoMove",
+  "updateUrl": "",
+  "authorList": ["luna724"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [],
+  "dependencies": []
+}
+]
