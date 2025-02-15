@@ -15,6 +15,10 @@ class CommandAutoMove(private val autoMove: AutoMove) : CommandBase() {
             §e 歩く向きの設定 L = 左, R = 右, F = 前, B = 後
             §6 - §f/automove hoverclick
             §e 左クリックするかどうか
+            §6 - §f/automove toggleinfo
+            §e ゴミを表示するかどうか
+            §6 - §f/automove setyaw <Yaw> <takenTicks>
+            §e Yaw を設定する
             """.trimIndent()
 
     override fun getCommandName(): String {
@@ -26,7 +30,7 @@ class CommandAutoMove(private val autoMove: AutoMove) : CommandBase() {
     }
 
     override fun getCommandUsage(sender: ICommandSender): String {
-        return "/automove <toggle|setdirection|hoverclick> {L/R/F}"
+        return "/automove <toggle|setdirection|hoverclick|setyaw|toggleinfo|safemode> {L/R/F}"
     }
 
     override fun processCommand(sender: ICommandSender, args: Array<String>) {
@@ -93,13 +97,30 @@ class CommandAutoMove(private val autoMove: AutoMove) : CommandBase() {
             sender.addChatMessage(ChatComponentText(msg))
         } else if ("setyaw".equals(args[0], ignoreCase = true)) {
             if (args.size < 2) {
-                val msg = "[§dLC-AutoMove§f]: §cmissing 1 Required arguments. §f: `/automove setyaw <Yaw>`"
+                val msg = "[§dLC-AutoMove§f]: §cmissing 1 Required arguments. §f: `/automove setyaw <Yaw> (takenTicks)`"
                 sender.addChatMessage(ChatComponentText(msg))
                 return
             }
             val stringYaw = args[1]
-            val yaw = stringYaw.toFloat()
-            autoMove.rotationManager.startYawChanger(yaw, 25)
+            val yaw = stringYaw.toFloatOrNull()
+            if (yaw == null) {
+                val msg = "[§dLC-AutoMove§f]: §c<Yaw> must be a number."
+                sender.addChatMessage(ChatComponentText(msg))
+                return
+            }
+
+            var takenTicks = 25
+            if (args.size > 2) {
+                takenTicks = args[2].toIntOrNull() ?: 25
+            }
+
+            if (takenTicks <= 0) {
+                val msg = "[§dLC-AutoMove§f]: §c<takenTicks> must be 1 or higher."
+                sender.addChatMessage(ChatComponentText(msg))
+                return
+            }
+
+            autoMove.rotationManager.startYawChanger(yaw, takenTicks)
         } else if (args.size >= 2) {
             return
         }

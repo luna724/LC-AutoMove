@@ -1,4 +1,4 @@
-package luna724.iloveichika.lcg.util
+package luna724.iloveichika.automove
 
 import luna724.iloveichika.automove.AutoMoveMod.Companion.HEADER
 import luna724.iloveichika.automove.AutoMoveMod.Companion.mc

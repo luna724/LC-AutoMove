@@ -17,7 +17,7 @@ plugins {
 
 group = "luna724.iloveichika.automove"
 archivesName = "LC-AutoMove"
-version = "2.4"
+version = "2.6"
 val MODID = "lc_automove"
 
 java {
@@ -74,8 +74,6 @@ val devenvMod: Configuration by configurations.creating {
 dependencies {
     // Dependencies
     shadowImpl("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    shadowImpl("com.google.code.gson:gson:2.10.1")
-    shadowImpl("org.apache.commons:commons-lang3:3.10")
 
     minecraft("com.mojang:minecraft:1.8.9")
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")

@@ -1,6 +1,5 @@
 package luna724.iloveichika.automove
 
-import luna724.iloveichika.lcg.util._ChatLib
 import net.minecraft.client.Minecraft
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
@@ -9,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import java.io.File
 
-@Mod(modid = "lc_automove", name = "LC-AutoMove", version = "2.4")
+@Mod(modid = "lc_automove", name = "LC-AutoMove", version = "2.6")
 class AutoMoveMod {
     @Mod.EventHandler
     fun preInit(event: FMLPreInitializationEvent) {
